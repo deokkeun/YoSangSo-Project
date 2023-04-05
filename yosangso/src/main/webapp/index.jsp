@@ -20,18 +20,9 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
-		<a href="product/person">
-       		<button><img src="${contextPath}/resources/image/people/brain.png"></button>
-		</a>
 
-       <form action="order/pay" method="GET">
-			<button>결제 테스트 </button>
-       </form>
-		
-
-
-
-
+        
+        
         
 
     <!-- 헤더, 컨텐츠 끝 -->

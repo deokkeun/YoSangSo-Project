@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,15 +20,18 @@ public class SignInServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			
-			
 			String inputEmail = req.getParameter("inputEmail");
 			String inputPw = req.getParameter("inputPw");
+			
+			System.out.println(inputEmail);
+			System.out.println(inputPw);
 			
 			Member mem = new Member();
 			
 			mem.setMemberEmail(inputEmail);
 			mem.setMemberPw(inputPw);
+			
+			System.out.println(mem);
 			
 			MemberService service = new MemberService();
 			
@@ -43,23 +47,24 @@ public class SignInServlet extends HttpServlet{
 				session.setMaxInactiveInterval(3600);
 				
 			
-//				Cookie c = new Cookie("saveId", inputEmail);
-//				
-//				if(req.getParameter("saveId") != null) {
-//					
-//					c.setMaxAge(60 * 60 * 24 * 30);
-//				} else {
-//					c.setMaxAge(0);
-//				}
-//				
-////				c.setPath();
-//				
-//				resp.addCookie(c);
-
-				String path = "${contextPath}";
+				Cookie c = new Cookie("saveId", inputEmail);
 				
-				req.getRequestDispatcher("path").forward(req, resp);
-
+				if(req.getParameter("saveId") != null) {
+					
+					c.setMaxAge(60 * 60 * 24 * 30);
+					
+				} else {
+					
+					c.setMaxAge(0);
+				}
+				
+//				쿠키 경로?? login페이지로 보내기
+				c.setPath("");
+				
+				resp.addCookie(c);
+				
+				System.out.println(loginMember);
+				
 				
 			} else { // 로그인 실패 경우
 				
@@ -67,8 +72,7 @@ public class SignInServlet extends HttpServlet{
 				
 			}
 			
-//			resp.sendRedirect(req.getContextPath());
-//			현재 경로에서 인덱스페이지 열리는 건가?
+			resp.sendRedirect(req.getContextPath());
 			
 			
 		} catch(Exception e) {
