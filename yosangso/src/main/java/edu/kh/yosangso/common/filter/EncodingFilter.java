@@ -12,6 +12,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @WebFilter(filterName="encodingFilter", urlPatterns="/*")
 public class EncodingFilter extends HttpFilter implements Filter{
@@ -34,6 +35,11 @@ public class EncodingFilter extends HttpFilter implements Filter{
 		String contextPath = ((HttpServletRequest)request).getContextPath();
 		
 		application.setAttribute("contextPath", contextPath);
+		
+		
+		HttpSession ses = ((HttpServletRequest)request).getSession();		
+		
+		ses.setAttribute("session", ses);
 		
 		chain.doFilter(request, response);
 	}

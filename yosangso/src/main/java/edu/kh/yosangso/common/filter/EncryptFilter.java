@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import edu.kh.yosangso.common.wrapper.EncryptWrapper;
 
-@WebFilter(filterName="encryptFilter", urlPatterns={"/member/signIn",
-													"/member/signUpBtn"})
+@WebFilter(filterName="encryptFilter", urlPatterns={"/member/login", 
+													"/member/signUp"})
 public class EncryptFilter extends HttpFilter implements Filter{
 	public void init(FilterConfig fConfig) throws ServletException{}
 	
