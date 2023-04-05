@@ -50,7 +50,7 @@ public class OrderDAO {
 				product.setProductImage(rs.getString("PRODUCT_IMAGE"));
 				product.setProductName(rs.getString("PRODUCT_NM"));
 				product.setPrice(rs.getInt("PRICE"));
-				product.setProductCount(rs.getInt("PRODUCT_COUNT"));
+				product.setProductCount(rs.getInt("BUYING_RATE"));
 				
 				payList.add(product);
 			}

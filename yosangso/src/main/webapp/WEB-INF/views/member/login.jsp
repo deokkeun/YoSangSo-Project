@@ -26,7 +26,7 @@
                 <div>요생소</div>
             </section>
             <section>
-                <form action="member/signIn" method="POST">
+                <form action="signIn" method="POST">
                     <div>
                         <input type="text" class="input-box" placeholder="아이디(이메일)" name="inputEmail" value="${cookie.saveId.value}" autocomplete="off">
                     </div>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="login-btn">
-                        <button type="submit" class="btn">로그인</button>
+                        <button class="btn">로그인</button>
                     </div>
 
                 </form>
